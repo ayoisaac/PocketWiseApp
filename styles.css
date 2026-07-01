@@ -139,6 +139,9 @@ body{background:var(--bg-page);color:var(--text-primary);min-height:100vh;displa
 .txn-amt{font-size:13px;font-weight:600}
 .txn-amt.inc{color:var(--accent)}
 .txn-amt.exp{color:var(--danger)}
+.txn-right{display:flex;align-items:center;gap:10px}
+.txn-delete{background:none;border:none;font-size:18px;line-height:1;color:var(--text-muted);cursor:pointer;padding:2px 4px;border-radius:6px}
+.txn-delete:hover{color:var(--danger);background:var(--danger-soft)}
 
 /* LOG */
 .log-form{background:var(--bg-surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:14px}

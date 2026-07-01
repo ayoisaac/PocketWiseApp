@@ -459,7 +459,10 @@ function renderLog() {
             <div class="txn-meta">${t.category} · ${t.date}</div>
           </div>
         </div>
-        <div class="txn-amt ${t.type === "income" ? "inc" : "exp"}">${t.type === "income" ? "+" : "-"}${fmtAmt(t.amount)}</div>
+        <div class="txn-right">
+          <div class="txn-amt ${t.type === "income" ? "inc" : "exp"}">${t.type === "income" ? "+" : "-"}${fmtAmt(t.amount)}</div>
+          <button class="txn-delete" title="Delete transaction" onclick="deleteTransaction(${t.id})">&times;</button>
+        </div>
       </div>`).join("")}</div>` : `<div class="empty-state">No transactions yet.</div>`}`;
 }
 
@@ -488,6 +491,13 @@ function addTransaction() {
   render();
 }
 
+// Removes a transaction (e.g. one logged by mistake) after the user confirms.
+function deleteTransaction(id) {
+  if (!confirm("Delete this transaction?")) return;
+  state.transactions = state.transactions.filter(t => t.id !== id);
+  saveData();
+  render();
+}
 
 // ============================================================
 // RENDER: WANTS VS NEEDS TAB
